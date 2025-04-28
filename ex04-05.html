@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    * {
+        background-color :rgb(248, 255, 240)
+    }
+    /* 동점이면 덮어쓴대 !!! (서로 같은 우선순위를 가졌을 경우) */
+    div{
+        background-color: rgba(221, 255, 127, 0.712);
+        /* , 넣어지고 rgba가 되면 투명도가 설정된거야 ~ */
+    }
+    p{
+        background-color: rgba(166, 243, 103, 0.589);
+    }
+    .undong{
+        border : 2px solid rgba(255, 210, 142, 0.973);
+        color :rgb(88, 175, 66) /* !important ; 강제로 우선순위 상위에 올려줌!*/
+    }
+    .bab{
+        border :2px dotted rgb(32, 156, 115);
+    }
+    #three{
+        color : wheat;
+        background-color: #719b2e;
+    }
+    #five{
+        color : rgb(173, 162, 132)
+    }
+    </style>
+</head>
+<body>
+    <p>숫자 입니당 ~ ^0^</p>
+    <div class = "undong">1</div>
+    <div class = "undong bab play">2</div>
+    <div class = "undong" id = "three">3</div>
+    <div class = "bab">4</div>
+    <div class = "bab" id ="five">5</div>
+    <p>그렇다네요 ^_^~</p>
+    
+</body>
+</html>

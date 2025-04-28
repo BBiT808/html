@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가상 선택자!!</title>
+    <style>
+            @font-face {
+            font-family: "myfont";
+            src: url("./fonts/나눔손글씨\ 백의의\ 천사.ttf")
+                format("truetype");
+        }
+        a{
+            color : coral;
+        }
+        a:visited{
+            color : pink;
+        }
+        a:active{
+            color: greenyellow;
+        }
+        /* 버튼과 인풋이 비활성화 되었을 때! 단 a 링크는 동작 안 해!! */
+        input:disabled,
+        button:disabled {
+            background-color:blanchedalmond;
+        }
+        /* 선택되어 누르는 동안 */
+        input:active{
+            background-color: aquamarine;
+        }
+        /* focus가 active를 포함함!!! */
+        /* 커서가 있는 동안 */
+        input:focus{
+            background-color: rgb(207, 247, 185);
+        }
+        .red-focus:focus{
+            background-color: red;
+        }
+        .blue-focus:focus{
+            background-color: blue;
+        }
+        div{
+            border :1px solid gainsboro;
+            width: 20px;
+            height: 20px;
+            margin :1px;
+            background-color: azure;
+            display : inline-block;
+        }
+        div:hover{
+            /* width: 40px; */
+            /* height: 40px; */
+            background-color: plum;
+        }
+        input[type]:checked + label {
+            color : orchid;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <!-- 또 까먹었지!!! Alt 누르고 방향키 누르면 글자 옮길 수 있음!! -->
+    <h1>가상선택자 응용!!</h1>
+    <a href="https://naver.com">네이버 링크!!</a>
+    <input type ="text" /> <button disabled>전송</button>
+    <hr />
+    <input type="text" class= "red-focus" value = "클릭하면 빨갛게 변합니다 !">
+    <input type="text" class= "blue-focus" value = "클릭하면 파랗게 변합니다 !">
+    <hr/>
+    <input type ="checkbox" id = "eat">
+    <label for ="eat"> 간식 </label>
+    <input type ="checkbox" id = "meal">
+    <label for ="meal"> 식사 </label>
+    <hr />
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+</body>
+</html>
