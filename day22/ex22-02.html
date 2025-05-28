@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>초시계~ 만들기 해설?</title>
+    <style>
+        .btn {
+            text-align: center;
+            margin: 20px;
+        }
+        .clock {
+            width : 400px;
+            height: 400px;
+            border-radius: 50%;
+            background-color: aliceblue;
+            margin: auto;
+            box-shadow: 10px 10px 20px #ccc;
+            position: relative;
+        }
+        #ms {
+            width: 5px;
+            height: 180px;
+            background-color: rgba(0, 140, 255, 0.349);
+            border-radius: 20px;
+            position: absolute;
+            top : 10px;
+            z-index: 100;
+            
+            /* 가운데 두기 위해서 이래의 두 개를 자주 씀 !!! */
+            left: 50%;
+            transform: translate(-50%);
+            
+            /* 바늘의 중심점을 지정해주는 것 !!! */
+            transform-origin: 50% 100%;
+            
+        }
+        #ss {
+            width: 13px;
+            height: 150px;
+            background-color: rgba(100, 237, 225, 0.603);
+            border-radius: 20px;
+            position: absolute;
+            top : 40px;
+            left: 50%;
+            transform: translate(-50%);
+            transform-origin: 50% 100%;
+        }
+        button {
+            margin : 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- div.btn>div#time_disp+button*3^div.clock>div#ms+div#ss -->
+    <div class="btn">
+        <div id="time_disp">0 min 0 sec 000 msec</div>
+        <button onclick="st()">시 작 !</button>
+        <button onclick="rec()"> 기 록 ! </button><br/>
+        <button onclick="end()">⚠️ 정 !지 !</button>
+        <button onclick="reset()">리 셋 !</button></div>
+    <div class="clock">
+        <div id="ms"></div>
+        <div id="ss"></div>
+    </div>
+    
+    <div><ol id="rec-disp">
+        [기록]
+    </ol></div>
+    <script>
+        let s_sec = (id = end_sec = msec = min = sec = s = m =0);
+        const ms = document.getElementById("ms");
+        const ss = document.getElementById("ss");
+        const recDisp = document.getElementById("rec-disp");
+
+        function st() {
+            id = setTimeout(() => {
+                end_sec += 1;
+                msec = end_sec % 100;
+                sec_ = parseInt(end_sec / 100);
+                sec = sec_ % 60;
+                min = parseInt(sec_ / 100);
+
+                document.getElementById(
+                    "time_disp"
+                ).innerHTML = `${min} min ${sec} sec ${msec} msec`;
+                ms.style.transform = `rotate(${msec * 3.6}deg)`;
+                ss.style.transform = `rotate(${sec * 6 + msec * 0.06}deg)`;
+                st(); /* 재귀함수로 자신을 호출할 수 있도록 넣어줌 !! */
+            },9);
+        }
+        function rec() {
+            const li = document.createElement('li');
+            li.textContent = `${min} min ${sec} sec ${msec} msec`;
+            recDisp.appendChild(li);
+            // recDisp.innerHTML = `${min} min ${sec} sec ${msec} msec`;
+        }
+
+        function end() {
+            clearTimeout(id);
+            console.log("타이머 종료 !");
+        }
+        function reset() {
+        clearTimeout(id);
+        s_sec = end_sec = msec = sec = min = 0;
+        document.getElementById("time_disp").innerHTML = `0 min 0 sec 000 msec`;
+        ms.style.transform = `translate(-50%) rotate(0deg)`;
+        ss.style.transform = `translate(-50%) rotate(0deg)`;
+        recDisp.innerHTML = "[기록]";
+        // const li = document.querySelector("li");
+        // const parent = li.parentElement;
+        // parent.querySelectorAll("li").forEach((v) => v.remove());
+      }
+    </script>
+    
+</body>
+</html>

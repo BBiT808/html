@@ -1,0 +1,28 @@
+<!-- 20250528 html 22번째 수업 !!!! 이제 자기 사이트도 만들어볼 수 있대 !!! -->
+ <!-- 참고 사이트 : https://www.typeitjs.com/ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/typeit@8.8.7/dist/index.umd.js"></script>
+    <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                new TypeIt("#typeit", {
+                    speed : 50,
+                    startDelay : 300,
+                })
+                    .type ("저의 Homepage에 오신 것을 환 영 합 니 다 ! ^0^", { delay : 1000})
+                    .move(-23, {delay : 1000})
+                    .delete(8, {delay : 1000})
+                    .type("포트폴리오 사이트", {delay : 400})
+                    .go();
+            });
+    </script>
+</head>
+<body>
+    <h1 id ="typeit"></h1>
+    
+</body>
+</html>
