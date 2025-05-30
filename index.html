@@ -4,108 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML 수업 파일 목차 : 3</title>
-    <style>
-        body {
-            margin : 0;
-            font-family: sans-serif;
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            background-color: rgba(255, 197, 202, 0.589);
-            color: white;
-            padding : 15px 30px;
-        }
-        .logo {
-            font-size: 1.3rem;
-            font-weight: 500;
-        }
-        .menu {
-            display : flex;
-            gap : 20px;
-            text-align: center;
-        }
-        .menu a,
-        .sidebar a {
-            text-decoration: none;
-            color: rgb(255, 251, 240);
-            font-weight: 550;
-            /* line-height: 1.8rem; */
-        }
-        .container {
-            display: flex;
-            height: 90vh;
-        }
-        .sidebar {
-            background-color: rgba(255, 178, 178, 0.836);
-            color: white;
-            padding: 2rem;
-            /* width: 220px; */
-            flex-basis: 180px;
-            display: flex;
-            flex-direction: column;
-            gap : 10px;
-        }
-        .main {
-            flex : 1;
-            background-color: white;
-            padding: 2rem;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        table {
-            display: flex;
-            justify-content: center;
-            border-spacing: 30px;
-        }
-        td {
-            padding: 10px;
-        }
-        h1,
-        p {
-            text-align: center;
-        }
-
-        video {
-            display: block;
-            margin: 0 auto;
-        }
-        @media (max-width: 768px) {
+<style>
+    body {
+        margin: 0;
+        font-family: sans-serif;
+    }
     .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+        display: flex;
+        justify-content: space-between;
+        background-color: rgba(255, 197, 202, 0.589);
+        color: white;
+        padding: 15px 30px;
     }
-
+    .logo {
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
     .menu {
+        display: flex;
+        gap: 20px;
+        text-align: center;
+    }
+    .menu a,
+    .sidebar a {
+        text-decoration: none;
+        color: rgb(255, 251, 240);
+        font-weight: 550;
+    }
+    .container {
+        display: flex;
+        height: 100vh;
+    }
+    .sidebar {
+        background-color: rgba(255, 178, 178, 0.836);
+        color: white;
+        padding: 2rem;
+        flex-basis: 180px;
+        display: flex;
         flex-direction: column;
         gap: 10px;
-        width: 100%;
+        height: 100vh;
+        box-sizing: border-box;
+    }
+    .main {
+        flex: 1;
+        background-color: white;
+        padding: 2rem;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+    table {
+        display: flex;
+        justify-content: center;
+        border-spacing: 30px;
+    }
+    td {
+        padding: 10px;
+    }
+    h1,
+    p {
+        text-align: center;
     }
 
-    .container {
-        flex-direction: column;
+    video {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
         height: auto;
     }
 
-    .sidebar {
+    /* 모바일에서 데스크탑 레이아웃 유지하기 */
+   @media (max-width: 768px) {
+    .container {
+        flex-direction: row; /* 데스크탑 구조 유지 */
+        height: auto;
+    }
+
+    .navbar {
         flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        flex-basis: auto;
+        align-items: center;
+        gap: 0;
+        padding: 10px 20px;
+    }
+
+    .menu {
+        flex-direction: row;
+        gap: 15px;
+        font-size: 0.9rem; /* 메뉴 글씨 살짝 줄이기 */
+    }
+
+    .sidebar {
+        flex-direction: column;
+        flex-basis: 120px; /* ⬅️ 사이드바 더 얇게! */
         padding: 1rem;
+        font-size: 0.85rem; /* ⬅️ 폰트도 줄이기 */
     }
 
     .sidebar a {
-        flex: 1 1 45%;
-        text-align: center;
-        padding: 8px;
-        margin: 2px;
+        padding: 5px 0;
+        text-align: left;
     }
 
     .main {
-        padding: 1rem;
+        padding: 1.5rem;
+        font-size: 0.95rem; /* 본문 글씨도 살짝 줄이기 */
+    }
+
+    .logo {
+        font-size: 1rem; /* 로고도 조금 작게 */
     }
 
     video {
@@ -114,7 +121,8 @@
         height: auto;
     }
 }
-    </style>
+
+</style>
 </head>
 <body>
     <!-- div.navbar>div.logo{MySite}+div.menu>a{Home}*3 -->
@@ -146,6 +154,12 @@
             <a href="#" data-day="day15">Day 15</a>
             <a href="#" data-day="day16">Day 16</a>
             <a href="#" data-day="day17">Day 17</a>
+            <a href="#" data-day="day18">Day 18</a>
+            <a href="#" data-day="day19">Day 19</a>
+            <a href="#" data-day="day20">Day 20</a>
+            <a href="#" data-day="day21">Day 21</a>
+            <a href="#" data-day="day22">Day 22</a>
+            <a href="#" data-day="day23">Day 23</a>
             
         </div>
         <div class="main" id = "main">
@@ -755,6 +769,19 @@
         <td></td>
     </tr>
     </table>`,
+        day23: `<h1>❄️ 23일차 🌬️</h1>
+    <table>
+    <tr>
+        <td><a href="./day22/ex22-01.html" style ="text-decoration: none;">🌸 예제 1</a></td>
+        <td><a href="./day22/ex22-01a.html" style ="text-decoration: none;">🧐 예제 1 과제 1</a></td>
+        <td><a href="./day22/ex22-01b.html" style ="text-decoration: none;">🤓 예제 1 과제 2</a></td>
+    </tr>
+    <tr>
+        <td><a href="./day22/ex22-01c.html" style ="text-decoration: none;">🧐 예제 1 과제 3</a></td>
+        <td><a href="./day22/ex22-02.html" style ="text-decoration: none;">🍒 예제 2</a></td>
+        <td></td>
+    </tr>
+    </table>`,
         
     };
 
@@ -772,5 +799,14 @@
         main.innerHTML = initialMainContent;
     });
     
+    function openPopup() {
+    const result = confirm("🌸 이 HTML 페이지는 🌸\n\n2025년 4월 22일 부터 5월 29일까지의 \nHTML 수업 내용을 정리한 대시보드임다!\n\n왼쪽 사이드바에서 각 회차로 이동 가능함다! 🥰📚\n\n이 내용을 계속 보시려면 확인 !");
+
+    if (result) {
+        alert("좋아요! 🤓 킵 고잉~! 🌟✨");
+    } else {
+        alert("확인 안 눌러도 상관 없지롱 ( •̀ ω •́ )✨");
+    }
+}
 </script>
 </html>

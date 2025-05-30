@@ -1,0 +1,195 @@
+<!-- 20250529 html 23번째 수업이라구~~~????!?!? 벌써 78번째 수업이더라구!!! -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홈페이지~ 만들기 4....! 단! 계!</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 390vh;
+        text-align: center;
+      }
+      section {
+        height: 95vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        color: rgba(123, 224, 255, 0.644);
+        background-color: rgb(219, 255, 248);
+      }
+      section:nth-of-type(even) {
+        background-color: rgb(239, 255, 240);
+        color: rgba(159, 253, 190, 0.63);
+      }
+      .scroll-text {
+        position: fixed;
+        top: 250px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.6rem;
+        font-weight: bold;
+        box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.413);
+        padding: 10px;
+        border-radius: 20px;
+      }
+      .left-menu,
+      .right-menu {
+        position: fixed;
+        height: 250px;
+        padding: 20px;
+        border-radius: 10px;
+        opacity: 0;
+        transition: 0.5s ease;
+        top: 100px;
+      }
+
+      .left-menu{
+        left: -200px;
+        color: palevioletred;
+        background-color:  rgba(255, 182, 193, 0.575);
+        width: 150px;
+      }
+      .left-menu2{
+        left : -200px;
+        top : 500px;
+        background-color: rgba(255, 223, 251, 0.582);
+        width: 400px;
+      }
+      .right-menu {
+        width: 250px;
+        right: -200px;
+        color: rgb(212, 149, 236);
+        background-color:  rgba(236, 224, 255, 0.664);
+      }
+      .end-line {
+        display: flex;
+        justify-content: center;
+      }
+      .end-menu {
+        position: fixed;
+        top : 90%;
+        color: lightgreen;
+        background-color: rgb(242, 255, 231);
+        padding: 20px;
+        height: 45px;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.5s ease;
+        width : 45%;
+        opacity: 0;
+      }
+      .show-end {
+        /* top : 90%; */
+        opacity: 1;
+        width: 100;
+      }
+
+      .show-left {
+        left : 10px;
+        opacity: 1;
+      }
+      .show-right {
+        right : 10px;
+        opacity: 1;
+      }
+    </style>
+</head>
+<body>
+    <!-- div.scroll-text#scrollText{처음이예요! 스크롤을 한 번 내려보세요 ~ ^_^} -->
+    <div class="scroll-text" id="scrollText">
+        처음이예요!<br>스크롤을 한 번 내려보세요 ~ ^_^
+    </div>
+
+    <!-- div.left-menu#leftMenu{왼쪽메뉴} -->
+    <div class="left-menu" id="leftMenu">
+    </div>
+    <div class="right-menu" id="rightMenu">
+      오른쪽메뉴
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <!-- div.end-line>div.class.end-menu#endMenu{감사합니다!} -->
+    <div class="end-line">
+      <div class="end-menu" id="endMenu">감사합니다!</div>
+    </div>
+
+    <!-- section{$단계!}*5 -->
+    <section>1단계!</section>
+    <section>2단계!</section>
+    <section>3단계!</section>
+    <section>4단계!</section>
+    <section>마지막 ~!</section>
+    
+<script>
+    const scrollText = document.getElementById("scrollText");
+    const leftMenu = document.getElementById("leftMenu");
+    const rightMenu = document.getElementById("rightMenu");
+    const endMenu = document.getElementById("endMenu");
+
+    let once = false;
+
+    window.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
+        const innerHeight = window.innerHeight;
+        const scrollHeight = document.body.scrollHeight;
+        console.log(scrollY);
+
+        /* 스크롤 위치에 따른 텍스트 변경 !! */
+       if (scrollY < 900) {
+          scrollText.textContent = `아래로 스크롤을 내려보세요 !/${scrollY}/${innerHeight}/${scrollHeight}`;
+        } else if (scrollY < 1400) {
+          scrollText.textContent = `지금은 2단계 !/${scrollY}/${innerHeight}/${scrollHeight}`;
+        } else if (scrollY < 2200) {
+          scrollText.textContent = `지금은 3단계 !/${scrollY}/${innerHeight}/${scrollHeight}`;
+        } else if (scrollY < 2900) {
+          scrollText.textContent = `지금은 4단계 !/${scrollY}/${innerHeight}/${scrollHeight}`;
+        } else if (scrollY < 3200) {
+          scrollText.textContent = `마지막 구간이에요./${scrollY}/${innerHeight}/${scrollHeight}`;
+        }
+
+        if (scrollY > 600 && scrollY < 1300) {
+          leftMenu.classList.add("show-left");
+          leftMenu.classList.remove("left-menu2");
+          leftMenu.innerHTML = `왼쪽메뉴<ol><li></li><li></li><li></li><li></li><li></li></ol>`;
+        } else if (scrollY > 1400 && scrollY < 2900) {
+          leftMenu.classList.add("show-left");
+          leftMenu.classList.add("left-menu2");
+          leftMenu.innerHTML = ` 아래쪽 변형 메뉴 ! <ol><li></li><li></li><li></li><li></li><li></li></ol>`
+        } else {
+          leftMenu.classList.remove("show-left");
+        }
+      
+        if (scrollY > 1200 && scrollY < 2800) {
+          rightMenu.classList.add("show-right");
+        } else {
+          rightMenu.classList.remove("show-right");
+        }
+
+        
+
+        const toTop =() => window.scrollTo({top : 0, behavior : "smooth"});
+
+        if (scrollY > 3300 && !once) {
+        // if (scrollY + innerHeight  >= scrollHeight - 100           && !once) { // 창 세로 스크롤 반응형 !!
+          once = true;
+          scrollText.textContent = "처음으로 돌 아 가 요 ! 슝 🚀";
+          endMenu.classList.add("show-end");
+          setTimeout(toTop, 2000);
+        } else if (scrollY <= 2900){
+          once = false;
+          endMenu.classList.remove("show-end");
+        }
+      });
+</script>
+</body>
+</html>
