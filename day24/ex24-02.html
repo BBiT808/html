@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: sans-serif;
+            margin: 0;
+            background-color: rgba(255, 250, 230, 0.651);
+            padding: 2rem;
+            /* display: flex; */
+            /* justify-content: center; */
+
+        }
+        .box {
+            width: 400px;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin : 90px auto;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            overflow : hidden;
+        }
+        .chat-container{
+            width: 100%;
+            box-sizing: border-box;
+            /* margin: auto; */
+            /* height: 500px; */
+            /* transform: translateY(50%); */
+            background-color: white;
+            padding: 1rem 0 0 0;
+            border-radius: 15px 15px 0 0;
+            box-shadow: 0 10px 20px #ccc;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            /* flex : 6; */
+            height: 600px;
+        }
+        .chat-input {
+            flex : none;
+            height: 80px;
+            width: 100%;
+            background-color: rgb(255, 253, 127);
+            display: flex;
+            margin: 0;
+            justify-content: stretch;
+        }
+        textarea {
+            width: 100%;
+            outline: none;
+            border: none;
+            background-color: #fffce3;
+            resize: none;
+            padding: 10px 15px ;
+            font-size: 1.2rem;
+            color: #555;
+            font-weight: bold;
+        }
+        button {
+            width: 30%;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border: none;
+            color: rgb(255, 248, 186);
+            background-color: #ff99a1;
+            cursor: pointer;
+
+        }
+        .message{
+            display: flex;
+            margin-bottom: 1.2rem;
+            align-items: end;
+            padding: 0 0.8rem;
+        }
+        .message.bot{
+            justify-content: start;
+        }
+        .message.user {
+            justify-content: end;
+        }
+        /* .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        } */
+        .bubble {
+            max-width : 95%;
+            position : relative;
+            background-color: lightpink;
+            padding : 0.7rem 1.5rem;
+            border-radius: 30px;
+            word-break: break-word;
+        }
+        .user .name {
+            text-align: right;
+        }
+        .name {
+            font-size: 0.8rem;
+            color : #555;
+            margin : 0 10px 2px
+        }
+        .bot .bubble {
+            background-color: rgba(240, 128, 128, 0.753);
+        }
+        .chat-container::-webkit-scrollbar{
+            background-color: rgba(255, 182, 193, 0.151);
+            border-radius: 6px;
+        }
+        .chat-container::-webkit-scrollbar-thumb:active{
+            background-color: rgb(255, 226, 226);
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <!-- div.chat-container>div.message.bot>div.avatar>div.name{myBot}+div.bubble{안녕하세요. 무엇을 도와드릴까요?}^^div.message.user>div>div.name{나}+div.bubble{Flex로 채팅화면을 만들수 있냐?} -->
+    <div class="box">
+    <div class="chat-container">
+        <div class="message bot">
+            <div class="avatar">
+                <div class="name">myBot</div>
+                <div class="bubble">안녕하세요. 무엇을 도와드릴까요?</div>
+            </div>
+        </div>
+        <div class="message user">
+            <div>
+                <div class="name">나</div>
+                <div class="bubble">집에 가고 싶어요.</div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- div.chat-input>textarea+button#send-btn -->
+    <div class="chat-input">
+        <textarea name="" id="text-area" placeholder="메세지를 입력하세요 !"></textarea>
+        <button id="send-btn">전송</button>
+    </div>
+    </div>
+
+    <script>
+      const sendBtn = document.getElementById("send-btn");
+      const chatContainer = document.querySelector(".chat-container");
+      const textarea = document.querySelector("#text-area");
+
+      const sendMessage = () => {
+        const userMessage = textarea.value.trim(); // 빈칸 없애기
+        if (userMessage) {
+          const userDiv = document.createElement("div");
+          userDiv.className = "message user";
+          userDiv.innerHTML = `<div><div class="name">나</div><div class="bubble">${userMessage}</div></div>`;
+          chatContainer.appendChild(userDiv);
+          textarea.value = ""; // 전송하고 입력창 비우기
+          chatContainer.scrollTop = chatContainer.scrollHeight; // 스크롤을 맨아래로 이동
+        }
+      };
+      sendBtn.addEventListener("click", sendMessage);
+      textarea.addEventListener("keydown", (event) => {
+        console.log(event);
+        if (event.key === "Enter" && !event.shiftKey) {
+          // if (event.key === "Enter" && event.key !== "Shift") {
+          event.preventDefault(); // 한칸내리는 기능 방지
+          sendMessage(); // 메세지 전송
+        }
+      });
+    </script>
+
+</html>

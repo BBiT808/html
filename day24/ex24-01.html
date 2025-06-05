@@ -9,13 +9,18 @@
         #container {
             /* width: 100%; */
             max-width: 320px;
-            border : 2px solid #aaa;
+            border : 2px solid #f2ffc4e8;
             overflow: hidden;
             border-radius: 20px;
             position: relative;
         }
         .contents {
             display: flex;
+        }
+        .contents img {
+            /* width: 310px; */
+            object-fit: cover;
+            border-right: 2px solid #eee;
         }
         .controls {
             display: flex;
@@ -48,20 +53,50 @@
         </div>
     </div>
     <div class="controls">
-        <button id="btn-left">이전</button>
-        <button id="btn-right">다음</button>
+        <button id="btn-left" onclick = "sLeft()">이전</button>
+        <button id="btn-right" onclick = "sRight()">다음</button>
     </div>
 
     <script>
         const img = document.querySelectorAll("img");
+        const contents = document.querySelector(".contents");
+        const btnLeft = document.getElementById("btn-left");
+        const btnRight = document.getElementById("btn-right");
+        
         const positions = [];
+        let imgOn = 0;
+    
+        window.addEventListener("load", () => {
         let pos = 0;
-        img.forEach((v,i) => {
-            pos += v.offsetWidth;
-            positions.push(pos);
+        img.forEach((v, i) => {
+          positions.push(pos);
+          pos += v.offsetWidth;
         });
         console.log(positions);
-        const sLeft = () => img.style.transform;
+        updateBtn();
+      });
+
+      const sLeft = () => {
+        if (imgOn > 0) {
+          imgOn--;
+          console.log(positions[imgOn]);
+          contents.style.transform = `translateX(-${positions[imgOn]}px)`;
+        }
+        updateBtn();
+      };
+      const sRight = () => {
+        if (imgOn < positions.length - 1) {
+          imgOn++;
+          console.log(positions[imgOn]);
+          contents.style.transform = `translateX(-${positions[imgOn]}px)`;
+        }
+        updateBtn();
+      };
+
+      const updateBtn = () => {
+        btnLeft.disabled = imgOn === 0;
+        btnRight.disabled = imgOn === positions.length -1;
+      };
     </script>
 </body>
 </html>
