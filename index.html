@@ -40,10 +40,13 @@
             color: rgb(255, 251, 240);
             font-weight: 550;
         }
+        .html, body {
+            height: 100%;
+        }
 
         .container {
             display: flex;
-            height: 100vh;
+            height: 100%;
         }
 
         .sidebar {
@@ -54,7 +57,7 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
-            height: 100vh;
+            height: 100%;
             box-sizing: border-box;
         }
 
@@ -94,7 +97,7 @@
         @media (max-width: 768px) {
             .container {
                 flex-direction: row;
-                height: auto;
+                height: 100%;
             }
 
             .navbar {
@@ -116,7 +119,7 @@
                 /* ⬅️ navbar 높이랑 똑같이! */
                 left: 0;
                 width: 90px;
-                height: calc(100vh - 60px);
+                height: 100%;
                 background-color: rgba(255, 178, 178, 0.836);
                 padding: 1rem;
                 font-size: 0.85rem;
